@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
-
-const stats = [
-  { value: "50+", label: "Repositories", color: "text-violet-400" },
-  { value: "200+", label: "Contributions", color: "text-teal-400" },
-  { value: "1.2k", label: "Followers", color: "text-yellow-400" },
-  { value: "500+", label: "Stars", color: "text-primary" },
-];
+import { useGitHub } from "@/context/GitHubContext";
 
 const AboutSection = () => {
+  const { user, stats } = useGitHub();
+
+  const displayStats = [
+    { value: user?.public_repos || 0, label: "Repositories", color: "text-violet-400" },
+    { value: stats.totalContributions.toLocaleString(), label: "Contributions", color: "text-teal-400" },
+    { value: user?.followers?.toLocaleString() || "0", label: "Followers", color: "text-yellow-400" },
+    { value: stats.totalStars.toLocaleString(), label: "Stars", color: "text-primary" },
+  ];
+
   return (
     <section id="about" className="px-6 py-20 border-t border-border">
       <div className="max-w-4xl mx-auto">
@@ -29,18 +32,20 @@ const AboutSection = () => {
           className="space-y-4 text-muted-foreground text-lg text-center mb-12"
         >
           <p>
-            Passionate full-stack developer with 5+ years of experience building scalable web applications
-            and contributing to open-source projects. I love turning complex problems into simple,
-            beautiful, and intuitive solutions.
+            {user?.bio || "Passionate developer building scalable web applications and contributing to open-source projects. I love turning complex problems into simple, beautiful, and intuitive solutions."}
           </p>
-          <p>
-            When I'm not coding, you'll find me exploring new technologies, contributing to the developer
-            community, or sharing knowledge through technical blog posts.
-          </p>
+          {user?.location && (
+            <p className="text-sm">📍 {user.location}</p>
+          )}
+          {user?.blog && (
+            <p className="text-sm">
+              🔗 <a href={user.blog.startsWith("http") ? user.blog : `https://${user.blog}`} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{user.blog}</a>
+            </p>
+          )}
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {stats.map((stat, index) => (
+          {displayStats.map((stat, index) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
