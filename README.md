@@ -46,7 +46,7 @@ This project is built with:
 ## How can I deploy this project?
 
 
-## Can I connect a custom domain to my Lovable project?
+## Can I connect a custom domain to my  project?
 
 Yes, you can!
 
