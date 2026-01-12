@@ -7,14 +7,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "basilokata@gmail.com", href: "mailto:BASILOKATA@GMAIL.COM" },
-  { icon: MapPin, label: "Location", value: "San Francisco, CA", href: null },
+  { icon: Mail, label: "Email", value: "basilokata@gmail.com", href: "mailto:basilokata@gmail.com" },
+  { icon: MapPin, label: "Location", value: "Nairobi, Kenya", href: null },
 ];
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "BAZ1995" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "www.linkedin.com/in/basil-okata-515b1836b" },
-  { icon: Twitter, href: "https://twitter.com", label: "@BazMyster" },
+  { icon: Github, href: "https://github.com/BAZ1995", label: "BAZ1995" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/basil-okata-515b1836b", label: "www.linkedin.com/in/basil-okata-515b1836b" },
+  { icon: Twitter, href: "https://twitter.com/@BazMyster", label: "@BazMyster" },
 ];
 
 const ContactSection = () => {
