@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 // Generate mock contribution data
@@ -9,31 +10,41 @@ const generateContributions = () => {
   for (let week = 0; week < weeks; week++) {
     const weekData: number[] = [];
     for (let day = 0; day < daysPerWeek; day++) {
-      // Random contribution level (0-4)
+      // Activity intensity level (0–4)
       weekData.push(Math.floor(Math.random() * 5));
     }
     contributions.push(weekData);
   }
+
   return contributions;
 };
 
-const contributions = generateContributions();
-
+// Safe Tailwind color mapping (replace later with your custom tokens if needed)
 const getContributionColor = (level: number) => {
   const colors = [
-    "bg-secondary", // 0 contributions
-    "bg-github-green/20", // 1-2 contributions
-    "bg-github-green/40", // 3-5 contributions
-    "bg-github-green/70", // 6-10 contributions
-    "bg-primary", // 10+ contributions
+    "bg-gray-200",
+    "bg-green-200",
+    "bg-green-400",
+    "bg-green-600",
+    "bg-green-800",
   ];
-  return colors[level];
+
+  return colors[level] ?? colors[0];
 };
 
 const ContributionGraph = () => {
+  const [contributions, setContributions] = useState<number[][]>([]);
+
+  // Generate data only on client to avoid hydration issues
+  useEffect(() => {
+    setContributions(generateContributions());
+  }, []);
+
+  if (!contributions.length) return null;
+
   const totalContributions = contributions
     .flat()
-    .reduce((acc, level) => acc + level * 3, 0);
+    .reduce((acc, level) => acc + level, 0);
 
   return (
     <section className="px-6 py-16 border-t border-border">
@@ -48,8 +59,10 @@ const ContributionGraph = () => {
             Contribution Activity
           </h2>
           <p className="text-muted-foreground">
-            <span className="text-foreground font-semibold">{totalContributions}</span>{" "}
-            contributions in the last year
+            <span className="text-foreground font-semibold">
+              {totalContributions}
+            </span>{" "}
+            activity points in the last year
           </p>
         </motion.div>
 
@@ -65,14 +78,16 @@ const ContributionGraph = () => {
                 {week.map((level, dayIndex) => (
                   <motion.div
                     key={`${weekIndex}-${dayIndex}`}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{
-                      duration: 0.2,
-                      delay: weekIndex * 0.01 + dayIndex * 0.01,
+                      duration: 0.15,
+                      delay: weekIndex * 0.005 + dayIndex * 0.005,
                     }}
-                    className={`w-3 h-3 rounded-sm ${getContributionColor(level)} transition-colors hover:ring-1 hover:ring-primary/50`}
-                    title={`${level * 3} contributions`}
+                    className={`w-3 h-3 rounded-sm ${getContributionColor(
+                      level
+                    )} transition-colors hover:ring-1 hover:ring-green-500/50`}
+                    title={`Activity level: ${level}`}
                   />
                 ))}
               </div>
