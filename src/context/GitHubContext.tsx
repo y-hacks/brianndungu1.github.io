@@ -15,7 +15,7 @@ const GitHubContext = createContext<GitHubContextType | null>(null);
 
 export const GitHubProvider = ({ children }: { children: ReactNode }) => {
   // Change this to your GitHub username!
-  const [username, setUsername] = useState("BAZ1995");
+  const [username, setUsername] = useState("y-hacks");
   
   const { user, repos, stats, loading, error } = useGitHubData(username);
 
