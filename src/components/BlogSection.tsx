@@ -3,35 +3,38 @@ import { Calendar, Clock, ArrowRight } from "lucide-react";
 
 const blogPosts = [
   {
-    title: "Building Scalable React Applications with Clean Architecture",
-    excerpt: "Learn how to structure your React projects for maintainability and scalability using clean architecture principles.",
+    title: "Network Reconnaissance with Nmap: Techniques, Flags, and Pitfalls",
+    excerpt:
+      "A practical breakdown of Nmap scanning techniques, common flags, and how reconnaissance results inform later attack and defense decisions in real-world environments.",
     date: "Jan 5, 2026",
-    readTime: "8 min read",
-    category: "React",
+    readTime: "9 min read",
+    category: "Reconnaissance",
     url: "#",
   },
   {
-    title: "A Deep Dive into TypeScript Generics",
-    excerpt: "Master TypeScript generics with practical examples and real-world use cases that will level up your code.",
+    title: "Threat Modeling Cloud Applications on Azure",
+    excerpt:
+      "An introduction to threat modeling for cloud-native workloads, covering attack surfaces, IAM risks, network exposure, and common misconfigurations in Azure environments.",
     date: "Dec 28, 2025",
-    readTime: "12 min read",
-    category: "TypeScript",
+    readTime: "11 min read",
+    category: "Cloud Security",
     url: "#",
   },
   {
-    title: "Optimizing Node.js APIs for High Performance",
-    excerpt: "Discover techniques to boost your Node.js API performance including caching, connection pooling, and more.",
+    title: "Hardening Node.js APIs: A Security-First Approach",
+    excerpt:
+      "Security considerations for Node.js APIs including authentication, authorization, input validation, dependency risks, and secure deployment practices.",
     date: "Dec 15, 2025",
     readTime: "10 min read",
-    category: "Node.js",
+    category: "Application Security",
     url: "#",
   },
 ];
 
 const categoryColors: Record<string, string> = {
-  React: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-  TypeScript: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  "Node.js": "bg-green-500/10 text-green-400 border-green-500/20",
+  Reconnaissance: "bg-red-500/10 text-red-400 border-red-500/20",
+  "Cloud Security": "bg-sky-500/10 text-sky-400 border-sky-500/20",
+  "Application Security": "bg-purple-500/10 text-purple-400 border-purple-500/20",
 };
 
 const BlogSection = () => {
@@ -46,10 +49,12 @@ const BlogSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Blog Posts
+            Technical Writing & Security Notes
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Sharing knowledge and insights from my journey as a developer
+            Write-ups, research notes, and lessons learned from hands-on
+            cybersecurity labs, cloud security experiments, and secure
+            engineering practice.
           </p>
         </motion.div>
 
@@ -66,7 +71,9 @@ const BlogSection = () => {
               className="group block p-6 rounded-xl bg-card border border-border hover:border-primary/30 transition-all duration-300"
             >
               <div className="mb-4">
-                <span className={`inline-block px-3 py-1 text-xs font-medium rounded-full border ${categoryColors[post.category]}`}>
+                <span
+                  className={`inline-block px-3 py-1 text-xs font-medium rounded-full border ${categoryColors[post.category]}`}
+                >
                   {post.category}
                 </span>
               </div>
@@ -101,3 +108,4 @@ const BlogSection = () => {
 };
 
 export default BlogSection;
+
