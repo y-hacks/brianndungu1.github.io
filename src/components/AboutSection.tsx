@@ -5,10 +5,30 @@ const AboutSection = () => {
   const { user, stats } = useGitHub();
 
   const displayStats = [
-    { value: user?.public_repos || 0, label: "Repositories", color: "text-violet-400" },
-    { value: stats.totalContributions.toLocaleString(), label: "Contributions", color: "text-teal-400" },
-    { value: user?.followers?.toLocaleString() || "0", label: "Followers", color: "text-yellow-400" },
-    { value: stats.totalStars.toLocaleString(), label: "Stars", color: "text-primary" },
+    {
+      value: user?.public_repos || 0,
+      label: "Repositories",
+      description: "Security tools & labs",
+      color: "text-violet-400",
+    },
+    {
+      value: stats.totalContributions.toLocaleString(),
+      label: "Contributions",
+      description: "Active hands-on practice",
+      color: "text-teal-400",
+    },
+    {
+      value: user?.followers?.toLocaleString() || "0",
+      label: "Followers",
+      description: "Community engagement",
+      color: "text-yellow-400",
+    },
+    {
+      value: stats.totalStars.toLocaleString(),
+      label: "Stars",
+      description: "Peer recognition",
+      color: "text-primary",
+    },
   ];
 
   return (
@@ -32,14 +52,50 @@ const AboutSection = () => {
           className="space-y-4 text-muted-foreground text-lg text-center mb-12"
         >
           <p>
-            {user?.bio || "Cybersecurity professional with hands-on experience in reconnaissance,vulnerability analysis, cloud security, and secure application development."}
+            I am a cybersecurity and cloud security practitioner focused on
+            reconnaissance, threat detection, vulnerability analysis, and
+            secure cloud-native application design. My work spans offensive
+            security labs, SOC-style investigations, and DevSecOps automation
+            using modern tooling.
           </p>
-          {user?.location && (
-            <p className="text-sm">📍 {user.location}</p>
+
+          <p>
+            I operate with a hybrid offensive–defensive mindset, applying
+            attacker techniques to improve detection, hardening, and secure
+            system architecture.
+          </p>
+
+          <p className="text-sm">
+            Tooling & Platforms: Linux, Nmap, Burp Suite, Python, Azure,
+            Network Security, CI/CD, GitHub Actions
+          </p>
+
+          <p className="text-sm italic">
+            All security work is conducted in controlled lab environments or
+            with explicit authorization.
+          </p>
+
+          {user?.bio && (
+            <p className="text-sm text-muted-foreground">
+              GitHub Bio: {user.bio}
+            </p>
           )}
+
+          {user?.location && (
+            <p className="text-sm">Location: {user.location}</p>
+          )}
+
           {user?.blog && (
             <p className="text-sm">
-              🔗 <a href={user.blog.startsWith("http") ? user.blog : `https://${user.blog}`} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{user.blog}</a>
+              Website:{" "}
+              <a
+                href={user.blog.startsWith("http") ? user.blog : `https://${user.blog}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                {user.blog}
+              </a>
             </p>
           )}
         </motion.div>
@@ -59,6 +115,9 @@ const AboutSection = () => {
                 {stat.value}
               </p>
               <p className="text-muted-foreground text-sm">{stat.label}</p>
+              <p className="text-muted-foreground text-xs mt-1">
+                {stat.description}
+              </p>
             </motion.div>
           ))}
         </div>
