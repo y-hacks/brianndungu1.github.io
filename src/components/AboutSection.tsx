@@ -32,7 +32,7 @@ const AboutSection = () => {
           className="space-y-4 text-muted-foreground text-lg text-center mb-12"
         >
           <p>
-            {user?.bio || "Passionate developer building scalable web applications and contributing to open-source projects. I love turning complex problems into simple, beautiful, and intuitive solutions."}
+            {user?.bio || "Cybersecurity professional with hands-on experience in reconnaissance,vulnerability analysis, cloud security, and secure application development."}
           </p>
           {user?.location && (
             <p className="text-sm">📍 {user.location}</p>
