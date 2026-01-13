@@ -7,9 +7,9 @@ const HeroSection = () => {
   const { user, loading, error } = useGitHub();
 
   const socialLinks = [
-    { icon: Linkedin, href: "https://www.linkedin.com/in/basil-okata-515b1836b", label: "LinkedIn" },
+    { icon: Linkedin, href: "www.linkedin.com/in/brian-ndung-u-762a6027a", label: "LinkedIn" },
     { icon: Twitter, href: user?.twitter_username ? `https://twitter.com//@BazMyster}` : "https://twitter.com", label: "Twitter" },
-    { icon: Mail, href: user?.email ? `mailto:${user.email}` : "mailto:basilokata@gmail.com", label: "Email" },
+    { icon: Mail, href: user?.email ? `mailto:${user.email}` : "mailto:brianndunguk003@gmail.com", label: "Email" },
   ];
 
   return (
