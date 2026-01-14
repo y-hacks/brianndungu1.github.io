@@ -9,7 +9,7 @@ const HeroSection = () => {
   const socialLinks = [
     {
       icon: Linkedin,
-      href: "",
+      href: "https://www.linkedin.com/in/brian-ndung-u-762a6027a",
       label: "LinkedIn",
     },
     {
