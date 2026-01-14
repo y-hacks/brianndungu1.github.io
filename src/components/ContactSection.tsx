@@ -39,7 +39,7 @@ const ContactSection = () => {
 
     try {
       // Send form data to Formspree
-      const res = await fetch("https://formspree.io/f/mqeekezw", {
+      const res = await fetch("https://formspree.io/f/xeeeqyng", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
