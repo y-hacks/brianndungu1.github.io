@@ -16,7 +16,7 @@ const HeroSection = () => {
       icon: Twitter,
       href: user?.twitter_username
         ? `https://twitter.com/${user.twitter_username}`
-        : "https://twitter.com",
+        : "https://x.com/cyber_lord22",
       label: "Twitter",
     },
     {
