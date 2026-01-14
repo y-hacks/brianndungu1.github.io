@@ -13,7 +13,7 @@ const contactInfo = [
 
 const socialLinks = [
   { icon: Github, href: "https://https://github.com/y-hacks", label: "y-hacks" },
-  { icon: Linkedin, href: "www.linkedin.com/in/brian-ndung-u-762a6027a", label: "www.linkedin.com/in/brian-ndung-u-762a6027a" },
+  { icon: Linkedin, href: "www.linkedin.com/in/brian-ndung-u-762a6027a", label: "www.linkedin.com/in/" },
   { icon: Twitter, href: "https://twitter.com/@cyber_lord22", label: "@cyber_lord22" },
 ];
 
