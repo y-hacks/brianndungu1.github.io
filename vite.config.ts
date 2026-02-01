@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     // Leave as "/" if using a custom domain or Lovable's hosting
-    base: mode === "production" ? prodBase : "/",
+    base: mode === "production" ? "/Brian_Ndung'u.github.io/" : "/",
     server: {
       host: "::",
       port: 8080,
